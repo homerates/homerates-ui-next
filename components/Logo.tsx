@@ -1,11 +1,14 @@
 // components/Logo.tsx
-import Image from "next/image";
-
-export default function Logo() {
+export default function Logo({ variant = "icon", height = 40 }: { variant?: "icon" | "name"; height?: number }) {
+  const file = variant === "icon" ? "homerates-icon.svg" : "homerates-name.svg";
   return (
-    <div className="flex items-center gap-2">
-      <Image src="/assets/homerates-mark.svg" alt="HomeRates mark" width={28} height={28} />
-      <Image src="/assets/homerates-wordmark.svg" alt="HomeRates wordmark" width={120} height={24} />
+    <div style={{ background: "#f0f0f0", padding: 8, display: "inline-block" }}>
+      <img
+        src={`/assets/${file}`}
+        alt={`HomeRates ${variant}`}
+        height={height}
+        style={{ display: "block" }}
+      />
     </div>
   );
 }

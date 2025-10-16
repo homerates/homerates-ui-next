@@ -1,27 +1,24 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
+    "target": "ES2020",
     "lib": [
       "dom",
       "dom.iterable",
-      "es2022"
+      "es2020"
     ],
-    "allowJs": true,
+    "allowJs": false,
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
-    "esModuleInterop": true,
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
       "@/*": [
-        "src/*",
-        "app/*"
+        "./*"
       ]
     },
     "types": [
@@ -32,7 +29,8 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "esModuleInterop": true
   },
   "include": [
     "**/*.ts",
