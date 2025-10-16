@@ -1,5 +1,6 @@
 // app/layout.tsx
 import "./globals.css";
+import Header from "@/components/Header";
 
 export const metadata = {
   title: "HomeRates",
@@ -9,9 +10,9 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      {/* Make <body> the grid parent */}
       <body className="app">
-        {children}
+        <Header />
+        <main className="mx-auto w-full max-w-6xl p-4">{children}</main>
       </body>
     </html>
   );
