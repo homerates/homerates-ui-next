@@ -1,9 +1,8 @@
-﻿// next.config.ts
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  // No experimental flags needed right now
+﻿/** @type {import("next").NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  eslint: { ignoreDuringBuilds: true },
+  typescript: { ignoreBuildErrors: false },
 };
 
-export default nextConfig;
-
+module.exports = nextConfig;

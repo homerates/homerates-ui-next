@@ -8,22 +8,22 @@ export function normalizeConceptAnswer(raw: string): string {
   txt = txt.replace(/^#+\s*/gm, "");
   txt = txt.replace(/\*\*(.*?)\*\*/g, "$1");
 
-  // Normalize bullet markers to "â€¢ "
-  txt = txt.replace(/^\s*-\s+/gm, "â€¢ ");
-  txt = txt.replace(/^\s*â€¢\s*/gm, "â€¢ ");
+  // Normalize bullet markers to " | €¢ "
+  txt = txt.replace(/^\s*-\s+/gm, " | €¢ ");
+  txt = txt.replace(/^\s* | €¢\s*/gm, " | €¢ ");
 
   // Collapse whitespace
   txt = txt.replace(/\r/g, "").replace(/\n{3,}/g, "\n\n").trim();
 
   // Ensure we have a clear takeaway line at top
   const lines = txt.split("\n").map(s => s.trim()).filter(Boolean);
-  let takeaway = lines.shift() || "Takeaway: hereâ€™s the concept in plain English.";
+  let takeaway = lines.shift() || "Takeaway: here | €™s the concept in plain English.";
   if (!/^takeaway:/i.test(takeaway)) {
-    takeaway = "Takeaway: " + takeaway.replace(/^[-â€¢]\s*/, "");
+    takeaway = "Takeaway: " + takeaway.replace(/^[- | €¢]\s*/, "");
   }
 
   // Collect up to 5 bullets (lines that start with bullet)
-  const bullets = lines.filter(l => /^[-â€¢]\s*/.test(l)).map(l => l.replace(/^[-â€¢]\s*/, "")).slice(0, 5);
+  const bullets = lines.filter(l => /^[- | €¢]\s*/.test(l)).map(l => l.replace(/^[- | €¢]\s*/, "")).slice(0, 5);
 
   // Extract existing Next steps if present
   const nextLines = lines.filter(l => /^next:/i.test(l)).map(l => l.replace(/^next:\s*/i, ""));
@@ -38,10 +38,11 @@ export function normalizeConceptAnswer(raw: string): string {
   const out: string[] = [];
   out.push(takeaway, "");
   if (bullets.length) {
-    out.push("â€¢ " + bullets.join("\nâ€¢ "), "");
+    out.push(" | €¢ " + bullets.join("\n | €¢ "), "");
   }
   out.push("Next: " + next[0]);
   out.push("Next: " + next[1]);
   return out.join("\n");
 }
+
 
