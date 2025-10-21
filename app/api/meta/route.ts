@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-// Static import â€” safer than dynamic import for Turbopack
+// Static import  | €” safer than dynamic import for Turbopack
 import pkg from "../../../package.json"; // tsconfig: "resolveJsonModule": true
 
 type MetaPayload = {
@@ -36,4 +36,5 @@ export async function GET() {
 }
 
 // push-proof
+
 

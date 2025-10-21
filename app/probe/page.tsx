@@ -19,7 +19,7 @@ export default function Probe() {
 
   async function run() {
     setOut(null);
-    setText("â€¦");
+    setText(" | €¦");
     const r = await fetch("/api/answers", {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -32,7 +32,7 @@ export default function Probe() {
       j.summary ??
       (j.fred
         ? `As of ${j.fred.asOf}: 10Y ${j.fred.tenYearYield?.toFixed(2)}%, 30Y ${j.fred.mort30Avg?.toFixed(2)}%, spread ${j.fred.spread?.toFixed(2)}%.`
-        : `path: ${j.path} Â· usedFRED: ${j.usedFRED} Â· confidence: ${j.confidence}`);
+        : `path: ${j.path}  | · usedFRED: ${j.usedFRED}  | · confidence: ${j.confidence}`);
     setText(line);
   }
 
@@ -47,7 +47,7 @@ export default function Probe() {
       </button>
 
       <div className="rounded border p-4">
-        <div className="font-mono text-sm whitespace-pre-wrap">{text || "â€”"}</div>
+        <div className="font-mono text-sm whitespace-pre-wrap">{text || " | €”"}</div>
       </div>
 
       <details className="rounded border p-4">
@@ -57,4 +57,5 @@ export default function Probe() {
     </main>
   );
 }
+
 
